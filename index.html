@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antepbey Baklava | Sanat Eseri Lezzetlerimiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #f4f1ea; 
+            --dark-green: #0f2419; 
+            --bright-green: #7bb31a; 
+            --text-dark: #1c1c1c;
+            --card-bg: #142b1f; 
+        }
+
+        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-dark); overflow-x: hidden; }
+
+        header { background-color: var(--dark-green); padding: 15px 40px; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #1a3a29; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .left-side { display: flex; align-items: center; gap: 40px; }
+        .logo img { height: 60px; display: block; }
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links a { color: #fff; text-decoration: none; font-size: 14px; font-weight: 600; text-transform: uppercase; transition: color 0.3s; letter-spacing: 0.5px; }
+        .nav-links a:hover { color: var(--bright-green); }
+        .btn-order-top { background-color: var(--bright-green); color: white; padding: 10px 22px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 14px; box-shadow: 0 0 12px rgba(123, 179, 26, 0.6); transition: transform 0.3s, box-shadow 0.3s; }
+        .btn-order-top:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(123, 179, 26, 0.9); }
+
+        .hero-banner-container { width: 100%; height: 470px; padding: 0; margin: 0; overflow: hidden; }
+        .hero-banner-single { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+        .hero-banner-text-box { background-color: #eae6db; padding: 40px 20px; text-align: center; border-bottom: 1px solid #dcd7c9; }
+        .hero-banner-text-box p { font-style: italic; font-size: 20px; color: var(--dark-green); max-width: 800px; margin: 0 auto; line-height: 1.6; font-weight: 500; }
+
+        .main-container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+        .category-title { color: var(--bright-green); font-size: 26px; text-align: center; margin-bottom: 30px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .category-section { margin-bottom: 60px; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; }
+        .product-card { background-color: var(--card-bg); border-radius: 4px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: transform 0.3s; display: flex; flex-direction: column; }
+        .product-card:hover { transform: translateY(-5px); }
+        .product-image { width: 100%; height: 200px; object-fit: cover; }
+        .product-info { padding: 15px; color: white; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .product-name { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+        .product-price { color: var(--bright-green); font-size: 15px; font-weight: bold; margin-bottom: 12px; }
+
+        .btn-whatsapp { background-color: var(--bright-green); color: white; text-decoration: none; padding: 8px 15px; border-radius: 4px; font-size: 14px; font-weight: bold; display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 0 8px rgba(123, 179, 26, 0.4); transition: background 0.3s; }
+        
+        .about-row { display: grid; grid-template-columns: 1fr 1fr; background: #fff; margin-bottom: 60px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); scroll-margin-top: 100px; }
+        .about-text { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+        .about-text h3 { font-size: 28px; color: var(--dark-green); margin-bottom: 15px; }
+        .about-images { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; gap: 10px; padding: 10px; }
+        .about-img-large { grid-row: span 2; width: 100%; height: 100%; object-fit: cover; }
+        .about-img-small { width: 100%; height: 100%; object-fit: cover; }
+
+        .promo-banner { background: linear-gradient(90deg, rgba(15,36,25,0.95) 0%, rgba(20,43,31,0.9) 100%), url('https://images.unsplash.com/photo-1589561454226-796a8aa89b05?w=600&auto=format&fit=crop&q=60'); padding: 40px; color: white; display: flex; justify-content: space-between; align-items: center; border-radius: 4px; margin-bottom: 60px; }
+        .promo-text h3 { color: var(--bright-green); font-size: 24px; margin-bottom: 10px; }
+
+        .blog-section { margin-bottom: 60px; scroll-margin-top: 100px; }
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .blog-card { background-color: var(--card-bg); border-radius: 4px; overflow: hidden; color: white; display: flex; flex-direction: column; cursor: pointer; transition: transform 0.3s; }
+        .blog-card:hover { transform: translateY(-5px); }
+        .blog-card img { width: 100%; height: 180px; object-fit: cover; }
+        .blog-content { padding: 20px; text-align: center; flex-grow: 1; }
+        .btn-read-blog { background-color: transparent; color: var(--bright-green); border: 1px solid var(--bright-green); padding: 6px 12px; border-radius: 4px; font-size: 13px; cursor: pointer; margin-top: 10px; transition: all 0.3s; }
+        .blog-card:hover .btn-read-blog { background-color: var(--bright-green); color: white; }
+
+        .blog-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.75); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background-color: var(--bg-color); max-width: 700px; width: 100%; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 25px rgba(0,0,0,0.5); animation: fadeIn 0.3s ease-in-out; position: relative; }
+        .modal-header-img { width: 100%; height: 250px; object-fit: cover; }
+        .modal-body { padding: 30px; }
+        .modal-body h3 { color: var(--dark-green); font-size: 24px; margin-bottom: 15px; }
+        .modal-body p { color: #444; line-height: 1.7; font-size: 16px; }
+        .close-modal { position: absolute; top: 15px; right: 20px; color: white; font-size: 30px; cursor: pointer; text-shadow: 0 2px 4px rgba(0,0,0,0.6); }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+        footer { background-color: var(--dark-green); color: #fff; padding: 60px 20px 20px 20px; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; border-bottom: 1px solid #1e422f; padding-bottom: 40px; }
+        .footer-logo-side img { height: 80px; margin-bottom: 20px; }
+        .footer-links h4, .footer-contact h4 { color: var(--bright-green); margin-bottom: 20px; font-size: 18px; }
+        .footer-links ul { list-style: none; }
+        .footer-links ul li { margin-bottom: 10px; }
+        .footer-links ul li a { color: #bbb; text-decoration: none; transition: color 0.3s; }
+        .footer-links ul li a:hover { color: #fff; }
+        .map-container { width: 100%; height: 160px; border-radius: 4px; overflow: hidden; margin-top: 15px; }
+        .copyright { text-align: center; padding-top: 20px; font-size: 13px; color: #888; }
+        @media (max-width: 768px) { .hero-banner-container { height: auto; } .nav-container { flex-direction: column; gap: 15px; } .left-side { flex-direction: column; gap: 15px; } .about-row { grid-template-columns: 1fr; } .promo-banner { flex-direction: column; text-align: center; gap: 20px; } .footer-container { grid-template-columns: 1fr; text-align: center; } }
+    </style>
+</head>
+<body id="ana-sayfa">
+
+    <header>
+        <div class="nav-container">
+            <div class="left-side">
+                <div class="logo"><img src="https://i.ibb.co/p6d8HF0v/Ekran-g-r-nt-s-2026-05-25-150153.png" alt="Antepbey Logo"></div>
+                <ul class="nav-links">
+                    <li><a href="#ana-sayfa">ANA SAYFA</a></li>
+                    <li><a href="#hakkimizda">HAKKIMIZDA</a></li>
+                    <li><a href="#urunler">ÜRÜNLER</a></li>
+                    <li><a href="#iletisim">İLETİŞİM</a></li>
+                    <li><a href="#blog">BLOG</a></li>
+                </ul>
+            </div>
+            <div class="right-side">
+                <a href="https://wa.me/905050337498" class="btn-order-top" target="_blank">Sipariş Ver</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-banner-container">
+        <img class="hero-banner-single" src="file:///C:/Users/a/Downloads/q1hdtrt8pnrga0cyby8tj5f2t8_BeArt_.jpg" alt="Baklava">
+    </section>
+
+    <main class="main-container">
+        <h2 id="urunler" style="text-align:center; margin-bottom: 40px; color: var(--dark-green); text-transform: uppercase;">ÜRÜNLERİMİZ</h2>
+        <section class="category-section">
+            <h3 class="category-title">Kiloluk Baklavalar</h3>
+            <div class="products-grid" id="grid-baklava"></div>
+        </section>
+        <section class="category-section">
+            <h3 class="category-title">Dondurmalar</h3>
+            <div class="products-grid" id="grid-dondurma"></div>
+        </section>
+        <section class="category-section">
+            <h3 class="category-title">Soğuk Tatlılar</h3>
+            <div class="products-grid" id="grid-soguk"></div>
+        </section>
+
+        <div class="about-row" id="hakkimizda">
+            <div class="about-text">
+                <span style="color: #aaa; font-size: 14px;">1996'dan Beri</span>
+                <h3>Antepbey Baklava: Bir Lezzet Mirası</h3>
+                <p style="color: #555; line-height: 1.6;">1996’dan günümüze uzanan yolculuğumuzda, lezzeti sadece bir damak tadı olarak değil, bir "sanat eseri" olarak görüyoruz. <br>  Antep'in bereketli topraklarından geleneksel yöntemlerle elde ettiğimiz en taze malzemeleri; ustalarımızın yıllar süren deneyimi, sabrı ve titizliğiyle birleştiriyoruz. Bizim için baklava sadece hamur ve şerbetin buluşması değildir; geçmişin köklü mirasını, modern bir dokunuşla geleceğe taşıma gayretidir.</p>
+                <br>
+                <a href="https://wa.me/905050337498" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Sipariş Ver</a>
+            </div>
+            <div class="about-images">
+                <img class="about-img-large" src="https://images.unsplash.com/photo-1676014959543-81df1079b423?w=600&auto=format&fit=crop&q=60" alt="baklava">
+                <img class="about-img-small" src="https://images.unsplash.com/photo-1749549028905-1504337cf3fb?w=600&auto=format&fit=crop&q=60" alt="Baklava">
+                <img class="about-img-small" src="https://cdn2.karaca.com/karaca-cms-uploads/soguk_baklava_3_b7ec4795fa.jpg" alt="Soğuk baklava">
+            </div>
+        </div>
+
+        <div class="promo-banner">
+            <div class="promo-text">
+                <h3>Özel Günleriniz Daha Tatlı Olsun</h3>
+                <p>Doğum günü, nişan ve tüm özel davetleriniz için toplu sipariş verebilirsiniz.</p>
+            </div>
+            <a href="https://wa.me/905050337498" target="_blank" class="btn-order-top">Sipariş Ver</a>
+        </div>
+    </main>
+
+    <footer id="iletisim">
+        <div class="footer-container">
+            <div class="footer-logo-side">
+                <img src="https://i.ibb.co/p6d8HF0v/Ekran-g-r-nt-s-2026-05-25-150153.png" alt="Logo" style="height: 120px;">
+                <p>Antepbey Baklava olarak en kaliteli ve lezzetli ürünleri sunmaktan gurur duyuyoruz.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Kurumsal</h4>
+                <ul>
+                    <li><a href="#ana-sayfa">Ana Sayfa</a></li>
+                    <li><a href="#hakkimizda">Hakkımızda</a></li>
+                    <li><a href="#urunler">Ürünlerimiz</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>İletişim</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Çamlık, Şahinbey Cd. No48/A, 34500 Çekmeköy/İstanbul</p>
+                <p><i class="fas fa-phone"></i> +90 505 033 74 98</p>
+            </div>
+        </div>
+        <div class="copyright">© ANTEPBEY BAKLAVA 2026. Tüm Hakları Saklıdır.</div>
+    </footer>
+
+    <script>
+        const whatsappNumber = "905050337498";
+        const products = [
+            { id: 1, name: "Cevizli Baklava (1 KG)", price: "450 TL", category: "baklava", img: "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?auto=format&fit=crop&w=300&q=80" },
+            { id: 2, name: "Fıstıklı Baklava (1 KG)", price: "600 TL", category: "baklava", img: "https://images.unsplash.com/photo-1516685018646-549198525c1b?auto=format&fit=crop&w=300&q=80" },
+            { id: 3, name: "Maraş Dondurması", price: "250 TL", category: "dondurma", img: "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=300&q=80" },
+            { id: 4, name: "Soğuk Baklava (1 KG)", price: "500 TL", category: "soguk", img: "https://images.unsplash.com/photo-1530631673369-bc20fdb3228d?auto=format&fit=crop&w=300&q=80" }
+        ];
+
+        function displayData() {
+            products.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                
+                card.innerHTML = `
+                    <img src="${p.img}" class="product-image" alt="${p.name}">
+                    <div class="product-info">
+                        <div class="product-name">${p.name}</div>
+                        <div class="product-price">${p.price}</div>
+                    </div>
+                `;
+                if(p.category === 'baklava') document.getElementById('grid-baklava').appendChild(card);
+                if(p.category === 'dondurma') document.getElementById('grid-dondurma').appendChild(card);
+                if(p.category === 'soguk') document.getElementById('grid-soguk').appendChild(card);
+            });
+        }
+        window.onload = displayData;
+    </script>
+</body>
+</html>
